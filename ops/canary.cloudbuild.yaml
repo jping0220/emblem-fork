@@ -60,6 +60,7 @@ steps:
       - '_TARGET_PROJECT=$_TARGET_PROJECT'
     script: |
       #!/usr/bin/env bash
+      printenv  # Print environment variables for debugging
       if [ ${_TRAFFIC} -lt 100 ]
       then gcloud pubsub topics publish canary-${_ENV} \
       --message="Increase ${_SERVICE}-${_REVISION} traffic to ${_NEW_TRAFFIC}" \
