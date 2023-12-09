@@ -23,6 +23,7 @@ steps:
   - name: gcr.io/cloud-builders/gcloud
     script: |
       #!/usr/bin/env bash
+      gcloud config set project ${_TARGET_PROJECT}
       URL=$(gcloud run services describe website --format "value(status.url)" --region=${_REGION} --project=${_TARGET_PROJECT})
       latest=$(echo "${URL/https:\/\//latest---}")
       set -e
